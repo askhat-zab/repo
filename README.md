@@ -38,7 +38,7 @@ To get started with this project, you need to set up the environment and depende
 5. **Update Helm Repository Index**
 
    ```bash
-   helm repo index charts --url https://askhat-zab.github.io/repo/helm/charts
+   helm repo index helm/charts --url https://askhat-zab.github.io/repo/helm/charts
    ```
 
 6. **Add Helm Repository**
