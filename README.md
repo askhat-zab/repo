@@ -11,7 +11,7 @@ To get started with this project, you need to set up the environment and depende
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/repo.git
+   git clone https://github.com/askhat-zab/repo.git
    cd repo
    ```
 
