@@ -3,7 +3,7 @@ FROM maven:3.8.5-openjdk-17-slim
 WORKDIR /app
 EXPOSE 8080
 
-RUN adduser --disabled-password -u 1001 bcc-user && chown -R bcc-user /app/
+RUN adduser --disabled-password -u 1001 admin-user && chown -R admin-user /app/
 COPY target/*.jar /app/app.jar
 USER admin-user
 
