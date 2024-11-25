@@ -43,9 +43,8 @@ securityContext:
   # runAsUser: 1000
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 8080
-  nodePort: 31080
 
 ingress:
   enabled: false
@@ -79,11 +78,11 @@ resources:
 
 livenessProbe:
   httpGet:
-    path: /
+    path: /actuator/health
     port: http
 readinessProbe:
   httpGet:
-    path: /
+    path: /actuator/health
     port: http
 
 autoscaling:
