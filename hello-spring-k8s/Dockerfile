@@ -1,7 +1,7 @@
 FROM maven:3.8.5-openjdk-17-slim AS MAVEN_BUILD
 WORKDIR /app
 COPY . .
-RUN mvn -B clean install -DskipTests
+RUN mvn -ntp -B clean install -DskipTests
 
 FROM maven:3.8.5-openjdk-17-slim 
 ENV TZ=Asia/Almaty

@@ -20,6 +20,7 @@ To get started with this project, you need to set up the environment and depende
    ```bash
    helm create task-5-wordpress
    helm create task-5-mysql
+   helm create task-6-hello-spring-k8s
    ```
 
 3. **Package Charts**
@@ -27,12 +28,14 @@ To get started with this project, you need to set up the environment and depende
    ```bash
    helm package task-5-wordpress
    helm package task-5-mysql
+   helm package task-6-hello-spring-k8s
    ```
 
 4. **Move Packages to Charts Directory**
 
    ```bash
    mv *.tgz charts/
+   cd ..
    ```
 
 5. **Update Helm Repository Index**

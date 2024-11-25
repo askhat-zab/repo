@@ -3,7 +3,7 @@ entries:
   task-5-mysql:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-11-11T01:04:49.751988378+05:00"
+    created: "2024-11-25T04:40:32.634227681+05:00"
     description: A Helm chart for Kubernetes
     digest: 6ec904991c81b7dbd1a20d959a76515418f11e536e335141958f6f950d188736
     name: task-5-mysql
@@ -14,7 +14,7 @@ entries:
   task-5-wordpress:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-11-11T01:04:49.752341493+05:00"
+    created: "2024-11-25T04:40:32.634662867+05:00"
     description: A Helm chart for Kubernetes
     digest: d4574546ce3c55599f7fea7a3143234f8efee60fe117acad3a96e0cdd7aa60ce
     name: task-5-wordpress
@@ -22,4 +22,15 @@ entries:
     urls:
     - https://askhat-zab.github.io/repo/helm/charts/task-5-wordpress-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-11T01:04:49.751501772+05:00"
+  task-6-hello-spring-k8s:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-11-25T04:40:32.635073234+05:00"
+    description: A Helm chart for Kubernetes
+    digest: 0725e3a24fa819b7076dcff34b0e19a6bb27790bf95d0ce09ec21983eec19e3e
+    name: task-6-hello-spring-k8s
+    type: application
+    urls:
+    - https://askhat-zab.github.io/repo/helm/charts/task-6-hello-spring-k8s-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-11-25T04:40:32.632919477+05:00"
