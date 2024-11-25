@@ -40,9 +40,7 @@ pipeline {
             '''
         }
     }
-    parameters {
-        string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Docker image tag')
-    }
+
     stages {
         stage('Git Clone') {
             steps {
@@ -86,11 +84,14 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
+            input {
+                message "Build Docker Image?"
+            }
             steps {
                 container('kaniko') {
                     sh """
                     cd $REPO_NAME
-                    /kaniko/executor --snapshot-mode=redo --context `pwd` --dockerfile Dockerfile --destination $AWS_ECR:${params.IMAGE_TAG}
+                    /kaniko/executor --snapshot-mode=redo --context `pwd` --dockerfile Dockerfile --destination $AWS_ECR:$IMAGE_TAG --cleanup
                     """
                 }
             }
@@ -127,25 +128,32 @@ pipeline {
     }
 
     post {
+        always {
+            echo 'This will always run'
+        }
         success {
-            script {
-                echo "Pipeline success"
-                emailext(
-                    subject: 'Jenkins Pipeline Success',
-                    body: "Pipeline '${env.JOB_NAME}' (#${env.BUILD_NUMBER}) success.\n\nURL: ${env.BUILD_URL}",
-                    to: '$EMAIL'
-                )
-            }
+            echo 'This will run only if successful'
+            mail bcc: '', 
+                body: "<b>Pipeline Success</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br>URL: ${env.BUILD_URL}", 
+                cc: '', 
+                charset: 'UTF-8', 
+                from: '', 
+                mimeType: 'text/html', 
+                replyTo: '', 
+                subject: "SUCCESS CI: Project -> ${env.JOB_NAME}", 
+                to: "${env.EMAIL}"
         }
         failure {
-            script {
-                echo "Pipeline failed"
-                emailext(
-                    subject: 'Jenkins Pipeline Failure',
-                    body: "Pipeline '${env.JOB_NAME}' (#${env.BUILD_NUMBER}) failed.\n\nURL: ${env.BUILD_URL}",
-                    to: '$EMAIL'
-                )
-            }
+            echo 'This will run only if Pipeline Failed'
+            mail bcc: '', 
+                body: "<b>Pipeline Failed</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br>URL: ${env.BUILD_URL}", 
+                cc: 'ganesh_1@mail.com', 
+                charset: 'UTF-8', 
+                from: '', 
+                mimeType: 'text/html', 
+                replyTo: '', 
+                subject: "ERROR CI: Project -> ${env.JOB_NAME}", 
+                to: "${env.EMAIL}"
         }
     }
 }
