@@ -50,10 +50,10 @@ To get started with this project, you need to set up the environment and depende
    helm repo add askhat-zab https://askhat-zab.github.io/repo/helm/charts
    ```
 
-7. **List Helm Repositories**
+7. **Update Helm Repositories**
 
    ```bash
-   helm repo list
+   helm repo update
    ```
 
 Follow these steps to set up your project, package the Helm charts, and add them to your Helm repository.
